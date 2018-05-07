@@ -7,7 +7,7 @@ class Header extends Component {
 
         return (
                 <header>
-                <div className="logo">hello there</div>
+                <div className="logo">Pithikos ?</div>
                 <nav>
                     <ul>
                         <li className="first">

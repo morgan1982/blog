@@ -11,17 +11,23 @@ import Customers from '../../components/customers/customers';
 
 
 class Main extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="App">
-            <Header />
-              <Route exact path='/' component={Homepage}/>
-              <Route exact path='/Products' component={Products}/>         
-            <Customers />
-            <Footer/>
-        </div>
-      </Router>
+
+
+    state = {
+        admin: false
+    }
+
+    render() {
+        return (
+            <Router>
+                <div className="App">
+                    <Header />
+                    <Route exact path='/' component={Homepage}/>
+                    <Route exact path='/Products' component={Products}/>         
+                    <Customers />
+                    <Footer/>
+                </div>
+            </Router>
 
     );
   }
