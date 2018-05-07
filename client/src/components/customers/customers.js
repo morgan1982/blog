@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './customers.css';
 import { link } from 'fs';
 
 
