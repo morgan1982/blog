@@ -7,8 +7,8 @@ import Header from './components/headerComponent/header';
 import Homepage from './components/pages/homePage';
 import Products from './components/pages/products';
 import Footer from './components/footerComponent/footer';
-import Customers from './components/customers/customers';
 import Admin from './containers/admin/admin';
+import Test from './components/test/testing';
 
 
 import './Assets/css/default.min.css';
@@ -21,8 +21,8 @@ class App extends Component {
             <Header />
               <Route exact path='/' component={Homepage}/>
               <Route exact path='/Products' component={Products}/>
-              <Route exact path='/Admin' component={Admin}/>           
-            <Customers />
+              <Route exact path='/Admin' component={Admin}/>
+              <Route exact path='/Testing' component={Test}/>                              
             <Footer/>
         </div>
       </Router>

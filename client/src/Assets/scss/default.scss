@@ -7,6 +7,7 @@ header {
     background: $black;
     color:$white;
     height: 100px;
+    box-shadow: 1px 3px 6px rgb(117, 126, 129);
     
     .logo {
         // border: 1px solid yellow;
@@ -37,30 +38,26 @@ header {
         }
 
         a {
-          font-size: 25px;
+          font-size: 19px;
           line-height: normal;
           color: white;  
         }
 
     }
+
+}
+.home {
+    h1 {
+        border-bottom: 3px solid darkcyan;
+        width: 300px;
+        padding: 5px;
+    }
+}
+.testContainer {
+    padding: 40px;
 }
 
-// .logo {
-//     font-size: 4rem;
 
-//     ul {
-//         list-style: none;
-//         padding: 0;
-//         width: 30%;
-//         margin: auto;
-//     }
-    
-//     li {
-//         font-size: 1.3rem;
-//         line-height: 2rem;
-//         border-bottom: 1px solid #777; 
-//     }
-// }
 
 
 
