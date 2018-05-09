@@ -1,12 +1,32 @@
 /*
-vars
+bootstrap config
+*/
+// $body-bg: #333;
+
+
+
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
+/*
+to import only the required dependencies 
+reboot for the some default styling
+utilities for some certain behaviors to take place 
+transitions for repsonsive layout to work
+type for certain typography defaults --under the import reboot statement--
 */
 
-$black: #010000;
+/*
+vars
+*/
+$black: #383836;
 $white: #ffffff;
 $lightGrey: #e6e6e6;
 $darkGrey: #333;
 $red: #ff1755;
+$pink: rgb(223, 152, 207);
+
+
+
 
 /*
 Mixins
@@ -33,21 +53,20 @@ bold 700 italic
 */
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    // font-family: 'Open Sans', sans-serif;
     font-size: 16px;
-    color: $black;
     font-weight: 400;
     font-style: normal;
 }
 
 a {
-    color: red;
+    color: $pink;
     text-decoration: none !important;
     @include transition(.3s ease-in-out);
     cursor: pointer;
 
     &:hover {
-        color:$red;
+        color: $pink;
         @include transition(.3s ease-in-out);
     }
 }

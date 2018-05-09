@@ -12,6 +12,7 @@ import Test from './components/test/testing';
 
 
 import './Assets/css/default.min.css';
+// import './Assets/css/bootstrap.min.css';
 
 class App extends Component {
   render() {
