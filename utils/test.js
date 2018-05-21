@@ -1,13 +1,28 @@
-// const summer = (() => console.log("the call back is here")) => {
-//     console.log("sumeer is running");
-//     callback();
-// }
+const fs = require('fs');
 
+const output = fs.readFileSync('./data.txt', 'utf8')
+                .trim()
+                .split('\n')
+                .map(line => line.split('  '))
+                .reduce((customers, line) => {
 
-x = "hello".number
-console.log(x)
-// const winder = () => {
-//     console.log("callbackk is running");
-// }
+                    customers[line[0]] = customers[line[0]] || [] // ??? check this line 
+                    customers[line[0]].push({
+                        name: line[1],
+                        price: line[2],
+                        quantity: line[3]
 
-// summer(winder);
+                    })
+
+                    return customers
+                }, {});
+
+console.log(JSON.stringify(output, null, 2))
+
+// let names = ["kenos", "aroto", "eme", "neme"];
+
+// let obj = {}
+
+// obj[names[1]] = "kairos"
+
+// console.log(obj);
