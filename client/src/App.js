@@ -15,6 +15,14 @@ import './Assets/css/default.min.css';
 // import './Assets/css/bootstrap.min.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      images: []
+    }
+  }
+
   render() {
     return (
       <Router>
