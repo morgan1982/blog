@@ -82,6 +82,14 @@ app.get('/api/customers', (req, res) => {
 
     res.json(customers);
 })
+// delete post
+app.get('/deletepost/:id', (req, res) => {
+    let sql = `DELETE FROM posts WHERE id = ${req.params.id}`;
+    let query = db.query(sql, (err, result) => {
+        if (err) throw err;
+        res.send(`post with id: ${req.params.id} deleted`);
+    })
+})
 
 
 
