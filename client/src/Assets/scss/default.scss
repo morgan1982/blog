@@ -43,9 +43,13 @@ header {
         a {
           font-size: 19px;
           line-height: normal;
-          color: white;  
+          color: white; 
         }
-
+        li:last-child a {
+            font-size: 16px;
+            color: rgb(99, 197, 204);
+            // font-size: 2rem;
+        }
     }
 
 }
