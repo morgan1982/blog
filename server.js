@@ -1,8 +1,14 @@
 const express = require('express');
 const app = express();
+const bodyparser = require('body-parser');
 const checkError = require('./utils/error');
 const mysql = require('mysql');
 
+// MIDDLEWARE
+app.use(bodyparser.json());
+// app.use(bodyparser.urlencoded({
+//     extended: true
+// }));
 
 // CONNECTION TO MYSQL SERVER
 const { sql: { host, user, password, database, port} } = require('./config/keys');
@@ -57,6 +63,19 @@ app.get('/addpost1', (req, res) => {
         console.log(result);
         res.send('post 1 created');
     })
+})
+// INSERT POSTS
+app.post('/addpost', (req, res) => {
+    const post = req.body;
+    // if (!post) {
+    //     return res.status(400).send({ error: true, message: 'invalid post' });
+    //     }
+    if (!post) { 
+        res.status(400).send()
+    }else {
+        console.log(post);
+        res.json(post);
+    }
 })
 // select posts
 app.get('/selectposts', (req, res) => {
