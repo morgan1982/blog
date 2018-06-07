@@ -14,7 +14,7 @@ const fileFilter = (req, file, callback) => {
         callback(null, true); // accepts the file
     } else {
         callback(null, false); // rejects
-        console.log('rejected');
+        console.log('rejected due to fileType..');
     }
 }
 
