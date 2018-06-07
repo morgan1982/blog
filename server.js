@@ -5,14 +5,21 @@ const bodyparser = require('body-parser');
 
 
 // MIDDLEWARE
+
 app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: true }));
 // for images storage
-app.use(bodyparser({keepExtensions: true, uploadDir: __dirname + '/client/images'})) // folder outside assets is used
+// app.use(bodyparser({keepExtensions: true, uploadDir: __dirname + '/client/images'})) // folder outside assets is used
+
+
+//Public folder
+// app.use(express.static('./public'));
+
 
 //ROUTES
 require("./routes/routes")(app);
 require("./routes/sqlManage")(app);
-require("./routes/imageUploader")(app);
+require("./routes/imageUploader_route")(app);
 
 
 
