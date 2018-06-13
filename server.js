@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const bodyparser = require('body-parser');
-
+const path = require('path');
 
 
 // MIDDLEWARE
@@ -13,7 +13,7 @@ app.use(bodyparser.urlencoded({ extended: true }));
 
 
 //Public folder
-// app.use(express.static('./public'));
+app.use(express.static(path.join(__dirname, '/public/uploads/')));
 
 
 //ROUTES
