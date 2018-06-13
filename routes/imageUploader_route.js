@@ -23,7 +23,7 @@ module.exports = app => {
     })
 
     app.get('/selectimage', (req, res) => {
-        let sql = 'SELECT * FROM images WHERE id=17';
+        let sql = 'SELECT * FROM images WHERE id=5';
         let query = db.query(sql, (err, result) => {
             checkError(err);
             let imageUrl = result[0].url.split('/');

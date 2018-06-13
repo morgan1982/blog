@@ -61,7 +61,7 @@ class Admin extends Component  {
     render () {
         console.log(this.state.images);
 
-        const skirt = <img src="/images/2018-06-07T22-12-19.845ZsampleImage.jpg"/>;
+        const skirt = <img src="/images/2018-06-07T22-12-19.845ZsampleImage.jpg" alt="skirt"/>;
 
         return (
             <div>
