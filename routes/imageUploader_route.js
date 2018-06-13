@@ -7,11 +7,10 @@ const upload = require("../services/imageService");
 
 module.exports = app => {
 
-        app.post('/addimage', upload.single('sampleImage'), (req, res) => {
-        console.log(req.file);
+    app.post('/addimage', upload.single('sampleImage'), (req, res) => {
+        console.log("route!", req.file);
         const imageUrl = req.file.path
                     .split('\\').join('/');
-        // console.log(imageUrl);
 
         let sql = `INSERT INTO images (url, reg_date)
                    VALUES ('${imageUrl}', NOW())`
@@ -20,7 +19,19 @@ module.exports = app => {
             checkError(err);
             console.log(result);
         })
-        res.send("image uploaded");
+        res.send(req.file.filename);
+    })
+
+    app.get('/selectimage', (req, res) => {
+        let sql = 'SELECT * FROM images WHERE id=17';
+        let query = db.query(sql, (err, result) => {
+            checkError(err);
+            let imageUrl = result[0].url.split('/');
+            const postImgUrl = imageUrl[2];
+            console.log(postImgUrl);
+            res.status(200).send(postImgUrl);
+
+        })
     })
 
 }

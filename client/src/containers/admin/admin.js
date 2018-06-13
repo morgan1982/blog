@@ -2,18 +2,34 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 
+// import image1 from '../../../../public/uploads/2018-06-07T22-12-19.845ZsampleImage.jpg';
+
 class Admin extends Component  {
 
     state = {
-        selectedFile: null
+        selectedFile: null,
+        images: []
     }
 
-    fileSelectedHandler = files => {
+    componentDidMount () {
+        axios.get('/selectimage')
+                .then(res => {
+                    console.log(res.data);
+                })
+    }
+
+    fileDropHandler = files => {
         // console.log(event.target.files[0]);
         // console.log(files[0]);
         this.setState({
             selectedFile: files[0],
             uploadProgress: 0
+        })
+    }
+
+    fileSelectedHandler = event => {
+        this.setState({
+            selectedFile: event.target.files[0]
         })
     }
 
@@ -32,17 +48,20 @@ class Admin extends Component  {
             }
         }).then(res => {
                     console.log("axios res", res);
+                    const images = [...this.state.images];
+                    images.push(res.data);
+                    this.setState({ images })
+
                 }).catch(err => {
                     console.log(err);
                     })
     }
-    postTest = () => {
-
-        axios.post('./addtest')
-    }
 
 
     render () {
+        console.log(this.state.images);
+
+        const skirt = <img src="/images/2018-06-07T22-12-19.845ZsampleImage.jpg"/>;
 
         return (
             <div>
@@ -50,7 +69,7 @@ class Admin extends Component  {
                 <Dropzone
                     multiple={false}
                     accept="image/*"
-                    onDrop={this.fileSelectedHandler}>
+                    onDrop={this.fileDropHandler}>
                     <p>Drop the image</p>
                 </Dropzone>
                 <input type="file" onChange={this.fileSelectedHandler} />
