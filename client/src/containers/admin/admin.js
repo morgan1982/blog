@@ -8,6 +8,9 @@ class Admin extends Component  {
 
     state = {
         selectedFile: null,
+        title: "",
+        categories: "",
+        imageName: ""
         images: []
     }
 
