@@ -24,7 +24,7 @@ const db = mysql.createConnection({
 // })
 try {
     db.connect(() => {
-        console.log(`connected to ${database}` )
+        console.log(`----connected to ${database}-----` )
     });
 }
 catch(error) {

@@ -8,13 +8,18 @@ const path = require('path');
 
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
-app.use('/images', express.static(path.join(__dirname, "public/uploads")))
+// console.log(path.join(__dirname, "/public/uploads"));
+const imageUrl = path.join(__dirname, "public/uploads").split("\\").join("/");
+console.log(imageUrl);
+// app.use('/images', express.static(path.join(__dirname, "public/uploads")));
+app.use('/images', express.static(imageUrl));
+
 // for images storage
 // app.use(bodyparser({keepExtensions: true, uploadDir: __dirname + '/client/images'})) // folder outside assets is used
 
 
 //Public folder
-// app.use(express.static('./public'));
+// app.use(express.static(path.join(__dirname, '/public/uploads/')));
 
 
 //ROUTES
