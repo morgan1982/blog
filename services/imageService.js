@@ -6,6 +6,7 @@ const storage = multer.diskStorage({
         callback(null, './public/uploads/'); // where the index.js is?
     },
     filename: function(req, file, callback) {
+        console.log("inside image service..", file);
         callback(null, new Date().toISOString().replace(/:/g, '-') + file.originalname);
     }
 })

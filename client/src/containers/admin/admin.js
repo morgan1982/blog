@@ -8,7 +8,8 @@ class Admin extends Component  {
 
     state = {
         selectedFile: null,
-        images: []
+        images: [],
+        imageName: ""
     }
 
     componentDidMount () {
@@ -16,6 +17,11 @@ class Admin extends Component  {
                 .then(res => {
                     console.log(res.data);
                 })
+    }
+    imagenameHandler = (e) => {
+        this.setState({
+            imageName: e.target.value
+        })
     }
 
     fileDropHandler = files => {
@@ -33,9 +39,12 @@ class Admin extends Component  {
         })
     }
 
+    // uploads the image to the database
     fileUploadHandler = () => {
         const fd = new FormData();
-        fd.append('sampleImage', this.state.selectedFile);
+        const { imageName } = this.state;
+        fd.append("sampleImage", this.state.selectedFile);
+        fd.append("name", imageName);
         axios.post('/addimage', fd, {
             headers: {
                 'Content-Type': 'multipart/form-data'
@@ -59,13 +68,21 @@ class Admin extends Component  {
 
 
     render () {
-        console.log(this.state.images);
+        // console.log(this.state.images);
+        console.log(this.state.imageName);
 
-        const skirt = <img src="/images/2018-06-07T22-12-19.845ZsampleImage.jpg" alt="skirt"/>;
+        const skirt = <img
+                style={{width: "100px"}} 
+                src="/images/2018-06-13T09-43-15.394Zimage-0-02-01-457fa630f6b753fac8adf76c5a0628a35a862fc7c9741bc2ca8064b1cc4c06b1-V.jpg" alt="skirt"/>;
 
         return (
             <div>
                 <h1>Admin</h1>
+                <div className="imagename">
+                    <div>image name</div>
+                    <input type="text" onChange={this.imagenameHandler}/>           
+                </div>
+
                 <Dropzone
                     multiple={false}
                     accept="image/*"
@@ -77,6 +94,7 @@ class Admin extends Component  {
                 <button className="btn btn-primary"
                         onClick={this.fileUploadHandler}
                         name="sampleImage">Upload</button>
+                        {skirt}
             </div>
         )
     }

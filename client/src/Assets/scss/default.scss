@@ -63,6 +63,18 @@ header {
 .testContainer {
     padding: 40px;
 }
+.imagename {
+    display: flex;
+    
+    div {
+        font-size: 1.5rem;
+        margin-right: 10px;
+    }
+    input {
+        border: 2px solid dodgerblue;
+        border-radius: 10px;
+    }
+}
 
 
 
