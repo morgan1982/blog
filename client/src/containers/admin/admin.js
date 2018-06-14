@@ -15,7 +15,7 @@ class Admin extends Component  {
     componentDidMount () {
         axios.get('/selectimage')
                 .then(res => {
-                    console.log(res.data);
+                    // console.log(res.data);
                 })
     }
     imagenameHandler = (e) => {
@@ -69,11 +69,16 @@ class Admin extends Component  {
 
     render () {
         // console.log(this.state.images);
-        console.log(this.state.imageName);
+        console.log(this.state.images[0]);
+        // have to put an id to the database
+        const balidis = this.state.images.map(image => (
+            <div key={image.url}>
+                <h1>{image.name}</h1>
+                <img src={"images/" + image.url} alt="balidis"/>
+            </div>
+            ))
+        // const balidis = <img src="/images/2018-06-14T08-27-40.564Zimage-0-02-01-457fa630f6b753fac8adf76c5a0628a35a862fc7c9741bc2ca8064b1cc4c06b1-V.jpg"></img>
 
-        const skirt = <img
-                style={{width: "100px"}} 
-                src="/images/2018-06-13T09-43-15.394Zimage-0-02-01-457fa630f6b753fac8adf76c5a0628a35a862fc7c9741bc2ca8064b1cc4c06b1-V.jpg" alt="skirt"/>;
 
         return (
             <div>
@@ -84,6 +89,7 @@ class Admin extends Component  {
                 </div>
 
                 <Dropzone
+                disablePreview={false}
                     multiple={false}
                     accept="image/*"
                     onDrop={this.fileDropHandler}>
@@ -94,7 +100,7 @@ class Admin extends Component  {
                 <button className="btn btn-primary"
                         onClick={this.fileUploadHandler}
                         name="sampleImage">Upload</button>
-                        {skirt}
+                        {balidis}
             </div>
         )
     }
