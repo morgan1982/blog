@@ -1,0 +1,32 @@
+a model is a means of communication
+only emphasizes selected aspects
+
+
+dbms
+
+good for data intensive apps.
+persistent storage of data
+centralized control of data
+control of redundancy -> control consistensy and integrity
+multiple user supprort
+sharing the data
+data documentation
+data intependence
+control of access and security
+backup and recovery
+
+schema
+
+is stable over time
+
+
+integrity -> does the database reflect reality well
+consistency -> is the database whitout internal conflicts
+
+--base knowledge--
+single-valued properties
+every entity instance must be uniquely referencable
+
+
+
+
