@@ -10,7 +10,6 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: true }));
 // console.log(path.join(__dirname, "/public/uploads"));
 const imageUrl = path.join(__dirname, "public/uploads").split("\\").join("/");
-console.log(imageUrl);
 // app.use('/images', express.static(path.join(__dirname, "public/uploads")));
 app.use('/images', express.static(imageUrl));
 
