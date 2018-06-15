@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 
+import TextInput from '../../components/input/textInput';
+
 // import image1 from '../../../../public/uploads/2018-06-07T22-12-19.845ZsampleImage.jpg';
 
 class Admin extends Component  {
@@ -9,7 +11,8 @@ class Admin extends Component  {
     state = {
         selectedFile: null,
         images: [],
-        imageName: ""
+        imageName: "",
+        category: ""
     }
 
     componentDidMount () {
@@ -18,9 +21,9 @@ class Admin extends Component  {
                     // console.log(res.data);
                 })
     }
-    imagenameHandler = (e) => {
+    inputHandler = (e) => {
         this.setState({
-            imageName: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -30,12 +33,6 @@ class Admin extends Component  {
         this.setState({
             selectedFile: files[0],
             uploadProgress: 0
-        })
-    }
-
-    fileSelectedHandler = event => {
-        this.setState({
-            selectedFile: event.target.files[0]
         })
     }
 
@@ -68,7 +65,7 @@ class Admin extends Component  {
 
 
     render () {
-        // console.log(this.state.images);
+        // console.log(this.state);
         console.log(this.state.images[0]);
         // have to put an id to the database
         const balidis = this.state.images.map(image => (
@@ -77,7 +74,6 @@ class Admin extends Component  {
                 <img src={"images/" + image.url} alt="balidis"/>
             </div>
             ))
-        // const balidis = <img src="/images/2018-06-14T08-27-40.564Zimage-0-02-01-457fa630f6b753fac8adf76c5a0628a35a862fc7c9741bc2ca8064b1cc4c06b1-V.jpg"></img>
 
 
 
@@ -86,7 +82,8 @@ class Admin extends Component  {
                 <h1>Admin</h1>
                 <div className="imagename">
                     <div>image name</div>
-                    <input type="text" onChange={this.imagenameHandler}/>
+                    <TextInput onChange={this.inputHandler} name="imageName"/>
+                    <TextInput onChange={this.inputHandler} name="category"/>
                 </div>
 
                 <Dropzone
@@ -96,7 +93,6 @@ class Admin extends Component  {
                     onDrop={this.fileDropHandler}>
                     <p>Drop the image</p>
                 </Dropzone>
-                <input type="file" onChange={this.fileSelectedHandler} />
                 <h2>{this.state.uploadProgress}</h2>
                 <button className="btn btn-primary"
                         onClick={this.fileUploadHandler}
