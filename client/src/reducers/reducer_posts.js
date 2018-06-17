@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from '../actions';
+import { FETCH_POSTS } from '../actions/types';
 
 
 export default function (state = [], { type, payload }) {

@@ -11,7 +11,7 @@ header {
     color:$white;
     height: 100px;
     box-shadow: 1px 3px 6px rgb(117, 126, 129);
-    
+
     .logo {
         // border: 1px solid yellow;
         position: absolute;
@@ -43,7 +43,7 @@ header {
         a {
           font-size: 19px;
           line-height: normal;
-          color: white; 
+          color: white;
         }
         li:last-child a {
             font-size: 16px;
@@ -65,7 +65,7 @@ header {
 }
 .imagename {
     display: flex;
-    
+
     div {
         font-size: 1.5rem;
         margin-right: 10px;
@@ -73,6 +73,12 @@ header {
     input {
         border: 2px solid dodgerblue;
         border-radius: 10px;
+    }
+}
+.admin-form {
+
+    .active {
+        background-color: orange;
     }
 }
 
