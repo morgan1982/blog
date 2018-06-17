@@ -4,9 +4,11 @@ import Dropzone from 'react-dropzone';
 
 import TextInput from '../../components/input/textInput';
 
-import { Field, reduxForm } from 'redux-form';
+import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions/new_post';
+import { previewPost } from '../../actions/preview_action';
+
 
 
 
@@ -16,7 +18,8 @@ class Admin extends Component  {
         selectedFile: null,
         images: [],
         imageName: "",
-        category: ""
+        category: "",
+        previews: []
     }
 
     componentDidMount () {
@@ -27,17 +30,23 @@ class Admin extends Component  {
     }
     inputHandler = (e) => {
         this.setState({
-            [e.target.name]: e.target.value
+            [e.target.name]: e.target.value // REMEMBER THIS
         })
     }
 
     fileDropHandler = files => {
-        // console.log(event.target.files[0]);
         // console.log(files[0]);
+        const previews = [...this.state.previews];
+        const preview = files[0].preview
+        previews.push(preview);
         this.setState({
             selectedFile: files[0],
-            uploadProgress: 0
+            uploadProgress: 0,
+            previews
         })
+    }
+    imageNameHandler = e => {
+        console.log(e.target.value);
     }
 
     // uploads the image to the database
@@ -71,7 +80,7 @@ class Admin extends Component  {
 
         return (
             <div className={meta.active ? "active" : ""}>
-                <pre>{JSON.stringify(meta, 0, 2)}</pre>
+               {/*<pre>{JSON.stringify(meta, 0, 2)}</pre>*/}
                 <label>{label}</label>
                 <input
                     className="form-control"
@@ -82,10 +91,11 @@ class Admin extends Component  {
     }
 
     onSubmit (values) {
+        console.log("submit");
         // console.log("the selected image file", this.state.selectedFile);
         const { selectedFile } = this.state
         // console.log('inside on Submit', values);
-        this.props.createPost(values, selectedFile, (res) => {
+        this.props.createPost(values, selectedFile, (res) => { // sends the data to the database
             console.log("response from axios", res);
         })
         // this.fileUploadHandler();
@@ -93,21 +103,17 @@ class Admin extends Component  {
 
 
     render () {
-        console.log("mapStateToProps", this.props.path);
-        // console.log(this.state);
+        console.log("mapStateToProps", this.props.title);
         // console.log(this.state.images[0]);
-        // console.log(this.props);
         // have to put an id to the database
-        const balidis = this.state.images.map(image => (
-            <div key={image.url}>
-                <h1>{image.name}</h1>
-                <img src={"images/" + image.url} alt="balidis"/>
-            </div>
-            ))
 
         const { handleSubmit } = this.props; // prop from redux-form
-        const path = this.props.path
-        const image = path ? <img src={path} alt="morty" /> : <h3>image</h3>;
+        // const { path } = this.props
+        const { previews } = this.state
+        const images = previews.map((image, key) => (
+            <img key={key} src={image} alt="morty" />
+            ))
+
 
         return (
             <div>
@@ -120,8 +126,12 @@ class Admin extends Component  {
 
                 <form className="form-group admin-form"
                       onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                    <Field label="Title"
+                           name="title"
+                           component={this.renderField}/>
                     <Field label="imageName"
                            name="imageName"
+                           onChange={this.imageNameHandler} // method is available
                            component={this.renderField}/>
                     <Field label="Category"
                            name="category"
@@ -141,19 +151,25 @@ class Admin extends Component  {
                 <button className="btn btn-primary"
                         onClick={this.fileUploadHandler}
                         name="sampleImage">Upload</button>
-                        {balidis}
-                        {image}
+                        {images}
             </div>
         )
     }
 }
 
-function mapStateToProps ({post}) {
-    if (post !== "image") {
-        const path = `images/${post.url}`
-        return { path };
-    }else {
-        return {path: ""};
+function mapStateToProps ( state ) {
+    const selector = formValueSelector('NewPost')
+    const { firstValue, SecondValue } = selector(state, 'title', 'imageName');
+
+    // let path = "kolos";
+
+    // if (post !== "image") { // have to remove the logic
+    //     path = `images/${post.url}`
+    //     // return { path };
+    // }
+    return {
+        title: firstValue,
+        name: SecondValue
     }
 
 }
@@ -161,5 +177,5 @@ function mapStateToProps ({post}) {
 
 export default reduxForm({
     form: 'NewPost'
-})(connect(mapStateToProps, { createPost })(Admin)
+})(connect(mapStateToProps, { createPost, previewPost })(Admin)
 );

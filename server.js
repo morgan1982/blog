@@ -20,6 +20,18 @@ app.use('/images', express.static(imageUrl));
 //Public folder
 // app.use(express.static(path.join(__dirname, '/public/uploads/')));
 
+// SEO
+
+/*
+app.engine('html', nunjucks.render);
+app.set('view engine', 'html');
+nunjucks.configure('server/templates', {
+    noCache: true,
+    autoescape: true,
+    express: app
+})
+*/
+
 
 //ROUTES
 require("./routes/routes")(app);

@@ -3,7 +3,7 @@ import { CREATE_POST } from '../actions/types';
 
 export default function (state= "image", {type, payload}) {
 
-    console.log("inside the create reducer", payload);
+    // console.log("inside the create reducer", payload);
     switch (type) {
 
 
