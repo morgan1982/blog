@@ -1,12 +1,12 @@
 import { PREVIEW_POST } from '../actions/types.js';
+import axios from 'axios';
 
+export const previewPost = id => async dispatch => {
 
-export const previewPost = (values) => {
+    const res = await axios.get(`/selectimage/${id}`);
 
-    console.log("preview action", values)
-
-    return {
+    dispatch({
         type: PREVIEW_POST,
-        payload: values
-    }
+        payload: res.data
+    })
 }

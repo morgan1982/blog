@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
 
@@ -7,8 +8,6 @@ import TextInput from '../../components/input/textInput';
 import { Field, reduxForm, formValueSelector } from 'redux-form';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions/new_post';
-import { previewPost } from '../../actions/preview_action';
-
 
 
 
@@ -23,10 +22,10 @@ class Admin extends Component  {
     }
 
     componentDidMount () {
-        axios.get('/selectimage')
-                .then(res => {
-                    // console.log(res.data);
-                })
+        // axios.get('/selectimage')
+        //         .then(res => {
+        //             // console.log(res.data);
+        //         })
     }
     inputHandler = (e) => {
         this.setState({
@@ -46,7 +45,7 @@ class Admin extends Component  {
         })
     }
     imageNameHandler = e => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
     }
 
     // uploads the image to the database
@@ -91,8 +90,6 @@ class Admin extends Component  {
     }
 
     onSubmit (values) {
-        console.log("submit");
-        // console.log("the selected image file", this.state.selectedFile);
         const { selectedFile } = this.state // the selected image
         // console.log('inside on Submit', values);
         this.props.createPost(values, selectedFile, (res) => { // sends the data to the database
@@ -107,16 +104,17 @@ class Admin extends Component  {
 
         const { handleSubmit } = this.props; // prop from redux-form
         const { previews } = this.state // imagePreviews
-        const images = previews.map((image, key) => {
+        // const images = previews.map((image, key) => {
 
-            return <img key={key} src={image} alt="morty" />
-            })
+        //     return <img key={key} src={image} alt="morty" />
+        //     })
         const { title, imageName, category } = this.props;
 
 
         return (
-            <div>
+            <div className="container">
                 <h1>Admin</h1>
+                <Link className="btn btn-success" to="/Admin/Preview">Preview</Link>
                 <div className="imagename">
                     <div>image name</div>
                     <TextInput onChange={this.inputHandler} name="imageName"/>
@@ -147,14 +145,11 @@ class Admin extends Component  {
                 </form>
                 <h2>{this.state.uploadProgress}</h2>
 
-                <button className="btn btn-primary"
-                        onClick={this.fileUploadHandler}
-                        name="sampleImage">Upload</button>
                 <div className="preview-form">
                 <div>
                     <h1>{title}</h1>
                     <div className="col-md-6">
-                        <img className="img-fluid" src={previews[0]} alt="image 1" />
+                        <img className="img-fluid" src={previews[0]} alt="1" />
                     </div>
                     <div className="col-md-8">
                         <img className="img-thumbnail" src={previews[1]} alt="morty" />
@@ -170,15 +165,11 @@ class Admin extends Component  {
 }
 
 function mapStateToProps ( state ) {
+    // selects directly from the dropzone
     const selector = formValueSelector('NewPost')
     const { title, imageName, category } = selector(state, 'title', 'imageName', 'category');
 
-    // let path = "kolos";
 
-    // if (post !== "image") { // have to remove the logic
-    //     path = `images/${post.url}`
-    //     // return { path };
-    // }
     return {
         title,
         imageName,
@@ -190,5 +181,5 @@ function mapStateToProps ( state ) {
 
 export default reduxForm({
     form: 'NewPost'
-})(connect(mapStateToProps, { createPost, previewPost })(Admin)
+})(connect(mapStateToProps, { createPost })(Admin)
 );

@@ -1,7 +1,9 @@
+// HAVE TO REFACTOR THE ROUTES RIGHT NOW IT IS USELESS
+
 import React from 'react';
 import {
     BrowserRouter as Router,
-    Route 
+    Route
 } from 'react-router-dom';
 
 import Main from '../containers/main/main';

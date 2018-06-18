@@ -9,7 +9,7 @@ import Products from './components/pages/products';
 import Footer from './components/footerComponent/footer';
 import Admin from './containers/admin/admin';
 import Test from './components/test/testing';
-
+import Preview from './containers/admin/previewPost';
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -27,7 +27,8 @@ ReactDOM.render(
                                 <Route exact path='/' component={Homepage}/>
                                 <Route exact path='/Products' component={Products}/>
                                 <Route exact path='/Admin' component={Admin}/>
-                                <Route exact path='/Testing' component={Test}/>  
+                                <Route path='/Admin/Preview' component={Preview}/>
+                                <Route exact path='/Testing' component={Test}/>
                             </Switch>
                         <Footer/>
                     </div>
@@ -36,4 +37,4 @@ ReactDOM.render(
              document.getElementById('root'));
 registerServiceWorker();
 
-                            
+

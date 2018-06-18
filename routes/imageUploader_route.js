@@ -37,16 +37,23 @@ module.exports = app => {
         res.send("ok from testing upload back")
     })
 
-    app.get('/selectimage', (req, res) => {
-        let sql = 'SELECT * FROM images WHERE id=5';
+    app.get('/selectimage/:id', (req, res) => {
+        const id = req.params.id
+        let sql = `SELECT * FROM images WHERE id='${id}'`;
         let query = db.query(sql, (err, result) => {
             checkError(err);
-            let imageUrl = result[0].url.split('/'); // use the filename instead
-            // remove this logic!
-            const postImgUrl = imageUrl[2];
-            console.log(postImgUrl);
-            res.status(200).send(postImgUrl);
 
+            res.status(200).send(result[0].url);
+
+        })
+    })
+    app.get('/selectPost/:id', (req, res) => {
+        const id = req.params.id;
+        let sql = `SELECT title, body FROM posts WHERE id='${id}'`;
+        let query = db.query(sql, (err, result) => {
+            checkError(err);
+
+            res.status(200).send(result[0]);
         })
     })
 
