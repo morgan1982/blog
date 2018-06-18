@@ -37,7 +37,7 @@ class Admin extends Component  {
     fileDropHandler = files => {
         // console.log(files[0]);
         const previews = [...this.state.previews];
-        const preview = files[0].preview
+        const preview = files[0].preview // fetches the preview path of the image
         previews.push(preview);
         this.setState({
             selectedFile: files[0],
@@ -50,7 +50,7 @@ class Admin extends Component  {
     }
 
     // uploads the image to the database
-    fileUploadHandler = () => { // HAS TO GO INSIDE REDUX
+    fileUploadHandler = () => {
         const fd = new FormData();
         const { imageName } = this.state;
         fd.append("sampleImage", this.state.selectedFile); // from dropzone //
@@ -93,26 +93,25 @@ class Admin extends Component  {
     onSubmit (values) {
         console.log("submit");
         // console.log("the selected image file", this.state.selectedFile);
-        const { selectedFile } = this.state
+        const { selectedFile } = this.state // the selected image
         // console.log('inside on Submit', values);
         this.props.createPost(values, selectedFile, (res) => { // sends the data to the database
             console.log("response from axios", res);
         })
-        // this.fileUploadHandler();
     }
 
 
     render () {
-        console.log("mapStateToProps", this.props.title);
-        // console.log(this.state.images[0]);
+
         // have to put an id to the database
 
         const { handleSubmit } = this.props; // prop from redux-form
-        // const { path } = this.props
-        const { previews } = this.state
-        const images = previews.map((image, key) => (
-            <img key={key} src={image} alt="morty" />
-            ))
+        const { previews } = this.state // imagePreviews
+        const images = previews.map((image, key) => {
+
+            return <img key={key} src={image} alt="morty" />
+            })
+        const { title, imageName, category } = this.props;
 
 
         return (
@@ -151,7 +150,20 @@ class Admin extends Component  {
                 <button className="btn btn-primary"
                         onClick={this.fileUploadHandler}
                         name="sampleImage">Upload</button>
-                        {images}
+                <div className="preview-form">
+                <div>
+                    <h1>{title}</h1>
+                    <div className="col-md-6">
+                        <img className="img-fluid" src={previews[0]} alt="image 1" />
+                    </div>
+                    <div className="col-md-8">
+                        <img className="img-thumbnail" src={previews[1]} alt="morty" />
+                    </div>
+                    <h3>{imageName}</h3>
+                    <div>{category}</div>
+                </div>
+
+                </div>
             </div>
         )
     }
@@ -159,7 +171,7 @@ class Admin extends Component  {
 
 function mapStateToProps ( state ) {
     const selector = formValueSelector('NewPost')
-    const { firstValue, SecondValue } = selector(state, 'title', 'imageName');
+    const { title, imageName, category } = selector(state, 'title', 'imageName', 'category');
 
     // let path = "kolos";
 
@@ -168,8 +180,9 @@ function mapStateToProps ( state ) {
     //     // return { path };
     // }
     return {
-        title: firstValue,
-        name: SecondValue
+        title,
+        imageName,
+        category
     }
 
 }
