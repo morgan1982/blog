@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import posed from 'react-pose';
 
 import { connect } from 'react-redux';
 import { previewPost } from '../../actions/preview_action';
@@ -15,7 +14,7 @@ class PreviewPost extends Component {
 
     componentDidMount () {
 
-        const ids = [42, 43, 44] // the id of the images
+        const ids = [29, 30, 31] // the id of the images
         ids.map(id => this.props.previewPost(id)) // calls the action for each id
         const titleId = 1
         this.props.fetchPost(titleId); // triggers the action to fetch the post data
@@ -24,11 +23,6 @@ class PreviewPost extends Component {
 
 
     render () {
-        console.log(this.props.hero)
-        const Square = posed.div({
-            idle: { scale: 1 },
-            hovered: { scale: 1.5 }
-        })
 
 
         return (
@@ -41,11 +35,8 @@ class PreviewPost extends Component {
                             src={this.props.hero}
                             alt="hero"
                             className="img-fluid" />
+                        <div>{this.props.body}</div>
                     </div>
-                    <Square
-                        pose={this.state.hovering ? "hovered" : "idle"}
-                        onMouseEnter={() => this.setState({ hovering: true })}
-                        onMouseLeave={() => this.setState({ hovering: false })}/>
                     <Link
                         to="/Admin"
                         className="btn btn-danger">back</Link>
