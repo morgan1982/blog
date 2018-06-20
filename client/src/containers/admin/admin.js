@@ -115,6 +115,7 @@ class Admin extends Component  {
             <div className="container">
                 <h1>Admin</h1>
                 <Link className="btn btn-success" to="/Admin/Preview">Preview</Link>
+                <Link className="btn btn-success" to="/Admin/Test">Test</Link>
                 <div className="imagename">
                     <div>image name</div>
                     <TextInput onChange={this.inputHandler} name="imageName"/>

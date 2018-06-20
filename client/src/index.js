@@ -10,6 +10,8 @@ import Footer from './components/footerComponent/footer';
 import Admin from './containers/admin/admin';
 import Test from './components/test/testing';
 import Preview from './containers/admin/previewPost';
+import AdminTest from './containers/admin/test';
+
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
@@ -28,6 +30,7 @@ ReactDOM.render(
                                 <Route exact path='/Products' component={Products}/>
                                 <Route exact path='/Admin' component={Admin}/>
                                 <Route path='/Admin/Preview' component={Preview}/>
+                                <Route exact path='/Admin/Test' component={AdminTest}/>
                                 <Route exact path='/Testing' component={Test}/>
                             </Switch>
                         <Footer/>
