@@ -78,7 +78,21 @@ header {
 .admin-form {
 
     .active {
-        background-color: orange;
+        background-color: dodgerblue;
+    }
+
+}
+.postPreview {
+
+    .img-footer {
+        // height: 15%;
+    }
+    .second-row {
+        margin-top: 15px;
+    }
+    .body {
+        border: 1px solid black;
+
     }
 }
 
