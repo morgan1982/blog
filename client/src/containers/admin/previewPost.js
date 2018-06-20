@@ -14,7 +14,7 @@ class PreviewPost extends Component {
 
     componentDidMount () {
 
-        const ids = [29, 30, 31] // the id of the images
+        const ids = [42, 43, 44] // the id of the images
         ids.map(id => this.props.previewPost(id)) // calls the action for each id
         const titleId = 1
         this.props.fetchPost(titleId); // triggers the action to fetch the post data
