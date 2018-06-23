@@ -1,3 +1,5 @@
+// EX 1
+
 import React from 'react';
 
 export default () => (
