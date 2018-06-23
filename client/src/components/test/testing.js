@@ -5,7 +5,7 @@ export default () => (
     <div className="testContainer">
         <div className="grid-container">
             <div className="team-description">
-                <h1>Our <span>Team</span></h1>
+                <h1 className="team-title">Our <span>Team</span></h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consectetur id iure consequatur, accusamus asperiores, doloribus illum voluptatem aperiam incidunt quos rem culpa. Possimus architecto dolores impedit dolorem voluptatum inventore!</p>
             </div>
             <figure className="team-member">
