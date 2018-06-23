@@ -1,3 +1,15 @@
+// variables
+$dark-blue: #20B0E0;
+$blue: #40798c;
+$accent: #70a9a1;
+$light-accent: #70a9a1;
+$yellow: #f6f1d1;
+$white: #f8f8f8;
+
+$fw-1: 300;
+$fw-n: 400;
+$fw-b: 900;
+
 .grid {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -6,7 +18,7 @@
 .cell {
     padding: 1rem;
     background: orange;
-}
+}#D86226FF
 .small-4 {
     grid-column: span 4;
 }
@@ -23,3 +35,15 @@
 
 
 }
+.testContainer {
+    line-height: 1.6;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.grid-container {
+    display: grid;
+}
+.grid-container img {
+
+}
+

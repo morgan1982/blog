@@ -3,18 +3,41 @@ import React from 'react';
 export default () => (
 
     <div className="testContainer">
-        <div className="container">
-            <div className="row">
-                <div className="col-md-6 col-lg-6 col-sm-12">
-                    <div className="card">
-                        <div className="card-body">
-                        <h3 className="card-title">hello there</h3>
-                            <p className="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam temporibus, ducimus dolore dignissimos amet explicabo similique, impedit odit nobis molestias sapiente earum? Delectus asperiores praesentium quasi? A magni sapiente dignissimos quia accusantium! Culpa nostrum quasi natus, voluptatibus sapiente vero minus.</p>
-                            <div className="btn btn-primary">read more</div>
-                        </div>
-                    </div>
-                </div>            
+        <div className="grid-container">
+            <div className="team-description">
+                <h1>Our <span>Team</span></h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consectetur id iure consequatur, accusamus asperiores, doloribus illum voluptatem aperiam incidunt quos rem culpa. Possimus architecto dolores impedit dolorem voluptatum inventore!</p>
             </div>
+            <figure className="team-member">
+                <img src="images/2018-06-20T21-04-21.163Zbanana_pag.jpg" alt="team-member" />
+                <figcaption>
+                    <h2 className="name">Team Member</h2>
+                </figcaption>
+            </figure>
+            <figure className="team-member">
+                <img src="images/2018-06-18T14-15-11.418Zimage3.jpeg" alt="team-member" />
+                <figcaption>
+                    <h2 className="name">Team Member</h2>`
+                </figcaption>
+            </figure>
+            <figure className="team-member">
+                <img src="images/2018-06-18T14-13-07.728Zglasses.jpeg" alt="team-member" />
+                <figcaption>
+                    <h2 className="name">Team Member</h2>
+                </figcaption>
+            </figure>            <figure className="team-member">
+                <img src="images/2018-06-18T13-21-35.570Zevil_morty.jpg" alt="team-member" />
+                <figcaption>
+                    <h2 className="name">Team Member</h2>
+                </figcaption>
+            </figure>            <figure className="team-member">
+                <img src="images/2018-06-18T13-21-35.570Zevil_morty.jpg" alt="team-member" />
+                <figcaption>
+                    <h2 className="name">Team Member</h2>
+                </figcaption>
+            </figure>
+
+
         </div>
     </div>
 
