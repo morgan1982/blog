@@ -1,46 +1,32 @@
 // EX 1
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default () => (
 
     <div className="testContainer">
-        <div className="grid-container">
-            <div className="team-description">
-                <h1 className="team-title">Our <span>Team</span></h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta consectetur id iure consequatur, accusamus asperiores, doloribus illum voluptatem aperiam incidunt quos rem culpa. Possimus architecto dolores impedit dolorem voluptatum inventore!</p>
-            </div>
-            <figure className="team-member">
-                <img src="images/2018-06-20T21-04-21.163Zbanana_pag.jpg" alt="team-member" />
-                <figcaption>
-                    <h2 className="name">Team Member</h2>
-                </figcaption>
-            </figure>
-            <figure className="team-member">
-                <img src="images/2018-06-18T14-15-11.418Zimage3.jpeg" alt="team-member" />
-                <figcaption>
-                    <h2 className="name">Team Member</h2>`
-                </figcaption>
-            </figure>
-            <figure className="team-member">
-                <img src="images/2018-06-18T14-13-07.728Zglasses.jpeg" alt="team-member" />
-                <figcaption>
-                    <h2 className="name">Team Member</h2>
-                </figcaption>
-            </figure>            <figure className="team-member">
-                <img src="images/2018-06-18T13-21-35.570Zevil_morty.jpg" alt="team-member" />
-                <figcaption>
-                    <h2 className="name">Team Member</h2>
-                </figcaption>
-            </figure>            <figure className="team-member">
-                <img src="images/2018-06-18T13-21-35.570Zevil_morty.jpg" alt="team-member" />
-                <figcaption>
-                    <h2 className="name">Team Member</h2>
-                </figcaption>
-            </figure>
-
-
+        <div className="sidebar">
+            <div className="logo">Awesome<span>Portofolio</span></div>
+            <nav>
+                <Link to="/admin">Home</Link>
+                <Link to="/admin">About</Link>
+                <Link to="/admin">Portofolio</Link>
+                <Link to="/admin">Contact</Link>
+            </nav>
         </div>
+
+        <div className="main-content">
+            <div className="portofolio">
+                <div className="portofolio-item square">one</div>
+                <div className="portofolio-item large-square">two</div>
+                <div className="portofolio-item square">three</div>
+                <div className="portofolio-item small-square">four</div>
+                <div className="portofolio-item tall">five</div>
+                <div className="portofolio-item wide">six</div>
+            </div>
+        </div>
+
     </div>
 
 )

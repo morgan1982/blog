@@ -1,14 +1,23 @@
 // variables
-$dark-blue: #20B0E0;
-$blue: #40798c;
-$accent: #70a9a1;
-$light-accent: #70a9a1;
-$yellow: #f6f1d1;
-$white: #f8f8f8;
+$font-light: 300;
+$font-bold: 700;
 
-$fw-1: 300;
-$fw-n: 400;
-$fw-b: 900;
+//colors
+$black: #353535;
+$gray: #4f4f4f;
+$medium-gray: #737373;
+$light-gray:  #c4c4c4;
+$orange: #f96855;
+
+$accent: $orange;
+
+$body-background: $black;
+$menu-background: $gray;
+
+$main-font-color: $light-gray;
+$menu-active-color: $light-gray;
+$menu-font-color: $medium-gray;
+$link-color: $accent;
 
 .grid {
     display: grid;
@@ -36,75 +45,20 @@ $fw-b: 900;
 
 }
 .testContainer {
-    font-weight: $fw-1;
-    line-height: 1.6;
-    max-width: 1200px;
-    margin: 0 auto;
+    background: $body-background;
+    color: $main-font-color;
+    font-size: 1.2rem;
+    line-height: 1.45;
+    display: flex;
+    flex-wrap: wrap;
 }
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 1em;
-    // border: 1px solid dodgerblue;
 
-    @media (min-width: 50em) {
-        grid-template-columns: repeat(auto-fit, minmax(14em, 1fr));
-    }
+.sidebar {
+    background: $menu-background;
+    flex: 1 1 20%;
+    min-width: 300px;
+    padding: 3em;
 }
-.grid-container img {
 
-}
-.team-title {
-    text-transform: uppercase;
-    font-weight: $fw-1;
-    font-size: 5rem;
-    color: #4497BAFF;
-    margin-top: 0;
-    line-height: 1;
 
-    span {
-        display: block;
-        font-weight: $fw-b;
-    }
-}
-.team-description {
-    grid-column: span 2;
-
-    @media (min-width: 50em) {
-        grid-column: auto;
-        grid-row: span 3;
-        align-self: center;
-    }
-}
-.team-member {
-    // border: 1px solid violet;
-    margin: 0;
-    padding: 0;
-    position: relative;
-
-    img {
-        width: 100%;
-        display: block; /*defautl inline blcok small gap to the top and bottom (as seen to text elememts)
-    eliminate the gap by put the display to block
-        */
-    }
-    figcaption {
-        position: absolute;
-        top: 1em;
-        bottom: 1em;
-        right: 1em;
-        left: 1em;
-        background-color: rgba($accent, .8);
-        color: $dark-blue;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity ease-in-out 300ms;
-    }
-
-    &:hover figcaption {
-        opacity: 1;
-    }
-}
 
