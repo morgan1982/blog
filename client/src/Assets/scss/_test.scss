@@ -139,12 +139,13 @@ $link-color: $accent;
     }
 
     &:hover::before {
-        opacity: .2;
+        opacity: .3;
     }
     &:hover {
         background-position: center;
     }
 }
+
 
 
 
