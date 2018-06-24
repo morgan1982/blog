@@ -29,11 +29,23 @@ $link-color: $accent;
     grid-template-rows: repeat(4, 1fr);
     grid-gap: 20px;
     height: 100%;
+    min-height: 100vh;
+
+    @media (min-width: 800) {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 .item {
     background-color: $orange;
-    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: $font-bold;
+    font-size: 1.5em;
+    color: $black;
 }
-
+.one {
+    background-image: url("//upsplash/800/600");
+}
 
 
