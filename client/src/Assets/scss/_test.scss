@@ -19,31 +19,11 @@ $menu-active-color: $light-gray;
 $menu-font-color: $medium-gray;
 $link-color: $accent;
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-gap: 1rem;
-}
-.cell {
-    padding: 1rem;
-    background: orange;
-}#D86226FF
-.small-4 {
-    grid-column: span 4;
-}
-.test2 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 200px 200px 200px;
-    grid-gap: 20px;
 
-    .item1 {
-        grid-column-start: 0;
-        grid-column-end: 1;
-    }
-
-
+* {
+    box-sizing: border-box;
 }
+
 .testContainer {
     background: $body-background;
     color: $main-font-color;
@@ -58,6 +38,112 @@ $link-color: $accent;
     flex: 1 1 20%;
     min-width: 300px;
     padding: 3em;
+}
+.logo {
+    text-transform: uppercase;
+    margin-bottom: 2em;
+
+    @media (min-width: 1500px) {
+        margin-bottom: 5em;
+    }
+
+    span {
+        font-weight: $font-bold;
+    }
+}
+
+.nav-item {
+    color: $menu-font-color;
+    text-decoration: none;
+    font-size: 1.7em;
+    display: inline-block;
+    margin-right: 2em;
+
+    @media (min-width: 1500px) {
+        display: block;
+        margin: 7vh 0;
+    }
+
+    &.active {
+        color: $menu-active-color;
+    }
+}
+
+// main-content
+
+.main-content {
+    padding: 10%;
+    flex: 1 1 80%;
+    min-height: 100vh;
+}
+//PORTOFOLIO
+.portofolio {
+    display: grid;
+    height: 100%;
+    grid-template-rows: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 20px;
+}
+
+
+.portofolio-item {
+    background: $accent;
+    color: $body-background;
+    font-weight: $font-bold;
+    display: flex;
+    font-size: 1.5em;
+    justify-content: center;
+    align-items: center;
+
+
+    &.medium {
+        grid-row: span 2;
+        grid-column: span 2;
+    }
+    &.large {
+        grid-row: span 3;
+        grid-column: span 3;
+    }
+    &.tall {
+        grid-row: span 3;
+        grid-column: span 2;
+    }
+    &.wide {
+        grid-row: span 2;
+        grid-column: span 3;
+    }
+}
+
+.two {
+    background-image: url("//unsplash.it/800/594");
+    color: $light-gray;
+    background-size: cover;
+    background-position: top left;
+    transition: all ease-in-out 300ms;
+    position: relative;
+    z-index: 5;
+    text-shadow: 0 0 5px rgba(0, 0, 0, .85);
+
+    &::before {
+        content: '';
+        display: block;
+        background: $black;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: .8;
+        transition: all ease-in-out 300ms;
+        z-index: -1;
+    }
+
+    &:hover::before {
+        opacity: .2;
+    }
+    &:hover {
+        background-position: center;
+    }
 }
 
 
