@@ -52,15 +52,16 @@ $link-color: $accent;
     // z-index: -1;
 
     &::before {
+        display: block;
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
         background-color: $black;
-        width: 100%;
-        opacity: 1;
-        z-index: 10;
+        // width: 100%;
+        // opacity: 1;
+        // z-index: 10;
     }
 }
 
