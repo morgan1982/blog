@@ -8,6 +8,7 @@ $gray: #4f4f4f;
 $medium-gray: #737373;
 $light-gray:  #c4c4c4;
 $orange: #f96855;
+$yellowish: #BADA55;
 
 $accent: $orange;
 
@@ -23,7 +24,11 @@ $link-color: $accent;
 * {
     box-sizing: border-box;
 }
-.container {
+.title {
+    padding: 5% 0;
+    text-transform: uppercase;
+}
+.grid-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-template-rows: repeat(4, 1fr);
@@ -42,18 +47,20 @@ $link-color: $accent;
     align-items: center;
     font-weight: $font-bold;
     font-size: 1.5em;
-    color: $black;
+    color: white;
+    z-index: 5;
 }
 .one {
     display: flex;
     position: relative;
     background-image: url("//unsplash.it/803/601");
-    background-position: top-left;
-    // z-index: -1;
+    background-position: top;
+    transition: all ease-out 600ms;
+    grid-column: 1 / -1;
+    height: 13em;
 
     &::before {
         content: "";
-        display: block;
         position: absolute;
         top: 0;
         left: 0;
@@ -62,13 +69,17 @@ $link-color: $accent;
         background: $black;
         opacity: .9;
         transition: all ease-in-out 300ms;
-        // width: 100%;
-        // opacity: 1;
-        // z-index: 10;
+        z-index: -1;
     }
-    &::before:hover {
+    &:hover::before {
         opacity: .2;
     }
+    &:hover {
+        background-position: center;
+    }
+}
+.two {
+    background-color: $yellowish;
 }
 
 
