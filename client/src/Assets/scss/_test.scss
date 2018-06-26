@@ -52,16 +52,22 @@ $link-color: $accent;
     // z-index: -1;
 
     &::before {
+        content: "";
         display: block;
         position: absolute;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
-        background-color: $black;
+        background: $black;
+        opacity: .9;
+        transition: all ease-in-out 300ms;
         // width: 100%;
         // opacity: 1;
         // z-index: 10;
+    }
+    &::before:hover {
+        opacity: .2;
     }
 }
 
